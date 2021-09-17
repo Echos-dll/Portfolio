@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e4fb46c288af244b9ecf76fbfdf7b0, type: 3}
+  m_Name: Friend List
+  m_EditorClassIdentifier: 
+  FriendList:
+  - Name: Friend
+    FriendObject: {fileID: 3797069525824313655, guid: 5eed872c1a4c2334f8f04d877cfcdce4,
+      type: 3}
+    AreaObject: {fileID: 1409482733101339783, guid: 647d1b66358ba084196d0bac059b46f7,
+      type: 3}
+    FriendPatrolObject: {fileID: 602226072, guid: 4f47cc59a5134b141975a06ab9eaeae3,
+      type: 3}
+    FriendSpawnObject: {fileID: 602226072, guid: 4df86f96125a3814a9e1d572e05d05bd,
+      type: 3}
+    FriendSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    FriendSpeed: 0
+    PatrolModel: 0
+  - Name: Friend
+    FriendObject: {fileID: 3797069525824313655, guid: 5eed872c1a4c2334f8f04d877cfcdce4,
+      type: 3}
+    AreaObject: {fileID: 1409482733101339783, guid: 647d1b66358ba084196d0bac059b46f7,
+      type: 3}
+    FriendPatrolObject: {fileID: 0}
+    FriendSpawnObject: {fileID: 0}
+    FriendSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    FriendSpeed: 3
+    PatrolModel: 1
+  - Name: Friend
+    FriendObject: {fileID: 3797069525824313655, guid: 5eed872c1a4c2334f8f04d877cfcdce4,
+      type: 3}
+    AreaObject: {fileID: 1409482733101339783, guid: 647d1b66358ba084196d0bac059b46f7,
+      type: 3}
+    FriendPatrolObject: {fileID: 0}
+    FriendSpawnObject: {fileID: 0}
+    FriendSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    FriendSpeed: 3
+    PatrolModel: 0

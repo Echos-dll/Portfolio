@@ -1,0 +1,35 @@
+if (Input.GetMouseButtonDown(0))
+        {
+            clickin = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+            Debug.Log(clickin);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            clickout = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+            counter++;
+            if ((clickin - clickout).magnitude > speed)
+            {
+                force = (clickin - clickout).normalized * speed;
+                ball.velocity = force * Time.deltaTime;
+            }
+            else
+                ball.velocity = (clickin - clickout) * Time.deltaTime;
+        }
+
+ if (Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            clickin = new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y);
+            Debug.Log(clickin);
+        }
+        if (Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            clickout = new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y);
+            counter++;
+            if ((clickin - clickout).magnitude > speed)
+            {
+                force = (clickin - clickout).normalized * speed;
+                ball.velocity = force * Time.deltaTime;
+            }
+            else
+                ball.velocity = (clickin - clickout) * Time.deltaTime;
+        }

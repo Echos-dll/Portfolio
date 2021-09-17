@@ -1,0 +1,138 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+[Serializable]
+public class ItemsInSpec
+{
+    public string name;
+    public GameObject poolingObject;
+    public int amount;
+
+}
+
+ public class ObjectPooler : MonoBehaviour
+ { 
+     public List<ItemsInSpec> PoolingObjectsList = new List<ItemsInSpec>();
+
+     public List<GameObject> pooledFriendObjects = new List<GameObject>();
+     public List<GameObject> pooledEnemyObjects = new List<GameObject>();
+
+     public List<GameObject> pooledFriendPatrolPoints = new List<GameObject>();
+     public List<GameObject> pooledEnemyPatrolPoints = new List<GameObject>();
+    
+     public List<GameObject> pooledFriendSpawnPoints = new List<GameObject>();
+     public List<GameObject> pooledEnemySpawnPoints = new List<GameObject>();
+    
+     public static ObjectPooler SharedInstance;
+
+     
+    private void Awake()
+    {
+        SharedInstance = this;
+        if (SharedInstance == null)
+        {
+            
+        }
+        else
+        {
+            foreach (ItemsInSpec item in PoolingObjectsList)
+            {
+                for (int i = 0; i < item.amount; i++)
+                {
+                    GameObject obj = Instantiate(item.poolingObject);
+                    obj.SetActive(false);
+                
+                    switch (obj.tag){
+                
+                        case "friend":
+                            pooledFriendObjects.Add(obj);
+                            break;
+                        
+                        case "enemy":
+                            pooledEnemyObjects.Add(obj);
+                            break;
+                    
+                        case "friendpatrolpoint":
+                            pooledFriendPatrolPoints.Add(obj);
+                            break;
+                        
+                        case "enemypatrolpoint":
+                            pooledEnemyPatrolPoints.Add(obj);
+                            break;
+                        
+                        case "friendspawnpoint":
+                            pooledFriendSpawnPoints.Add(obj);
+                            break;
+                        
+                        case "enemyspawnpoint":
+                            pooledEnemySpawnPoints.Add(obj);
+                            break;
+                    }
+                } 
+            }
+        }
+        
+    }
+
+    public GameObject GetPooledObject(string tag)
+    {
+        switch (tag)
+        {
+            case "friend":
+                
+                for (int i = 0; i <pooledFriendObjects.Count ; i++)
+                {
+                    if (!pooledFriendObjects[i].activeInHierarchy && pooledFriendObjects[i].CompareTag("friend"))
+                        return pooledFriendObjects[i];
+                }
+                break;
+            
+            case "enemy":
+                
+                for (int i = 0; i <pooledEnemyObjects.Count ; i++)
+                {
+                    if (!pooledEnemyObjects[i].activeInHierarchy && pooledEnemyObjects[i].CompareTag("enemy"))
+                        return pooledEnemyObjects[i];
+                }
+                break;
+            
+            case "friendpatrolpoint":
+                
+                for (int i = 0; i <pooledFriendPatrolPoints.Count ; i++)
+                {
+                    if (!pooledFriendPatrolPoints[i].activeInHierarchy && pooledFriendPatrolPoints[i].CompareTag("friendpatrolpoint"))
+                        return pooledFriendPatrolPoints[i];
+                }
+                break;
+            
+            case "enemypatrolpoint":
+                
+                for (int i = 0; i <pooledEnemyPatrolPoints.Count ; i++)
+                {
+                    if (!pooledEnemyPatrolPoints[i].activeInHierarchy && pooledEnemyPatrolPoints[i].CompareTag("enemypatrolpoint"))
+                        return pooledEnemyPatrolPoints[i];
+                }
+                break;
+            
+            case "friendspawnpoint":
+                
+                for (int i = 0; i <pooledFriendSpawnPoints.Count ; i++)
+                {
+                    if (!pooledFriendSpawnPoints[i].activeInHierarchy && pooledFriendSpawnPoints[i].CompareTag("friendspawnpoint"))
+                        return pooledFriendSpawnPoints[i];
+                }
+                break;
+            
+            case "enemyspawnpoint":
+                
+                for (int i = 0; i <pooledEnemySpawnPoints.Count ; i++)
+                {
+                    if (!pooledEnemySpawnPoints[i].activeInHierarchy && pooledEnemySpawnPoints[i].CompareTag("enemyspawnpoint"))
+                        return pooledEnemySpawnPoints[i];
+                }
+                break;
+        }
+        return null;
+    }
+}

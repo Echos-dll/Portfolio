@@ -1,0 +1,62 @@
+
+main-ball2.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Ball
+  rotate: false
+  xy: 508, 661
+  size: 297, 297
+  orig: 297, 297
+  offset: 0, 0
+  index: -1
+HardShadow
+  rotate: false
+  xy: 1414, 1532
+  size: 324, 301
+  orig: 324, 301
+  offset: 0, 0
+  index: -1
+Highlight
+  rotate: false
+  xy: 1740, 1720
+  size: 105, 113
+  orig: 105, 113
+  offset: 0, 0
+  index: -1
+Highlight2
+  rotate: true
+  xy: 2, 2
+  size: 316, 151
+  orig: 316, 151
+  offset: 0, 0
+  index: -1
+Outline
+  rotate: false
+  xy: 1414, 1236
+  size: 294, 294
+  orig: 294, 294
+  offset: 0, 0
+  index: -1
+Pattern
+  rotate: false
+  xy: 2, 960
+  size: 1410, 873
+  orig: 1410, 873
+  offset: 0, 0
+  index: -1
+SoftShadow
+  rotate: false
+  xy: 2, 320
+  size: 300, 301
+  orig: 300, 301
+  offset: 0, 0
+  index: -1
+Softlight
+  rotate: false
+  xy: 2, 623
+  size: 504, 335
+  orig: 504, 335
+  offset: 0, 0
+  index: -1

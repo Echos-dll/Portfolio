@@ -1,0 +1,83 @@
+{
+"skeleton": { "hash": "Yv92Ys9hQg3U1LDfO4orP6XhEYE", "spine": "3.7.94", "width": 294, "height": 294, "images": "./images/", "audio": "C:/Users/mf-um/Desktop/Ball_Animation" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "length": 117.81, "rotation": 89.63, "x": -30.01, "y": -52.92 },
+	{ "name": "bone2", "parent": "root", "length": 107.29, "rotation": 88.6, "x": 351.37, "y": -23.09 }
+],
+"slots": [
+	{ "name": "Outline", "bone": "root", "attachment": "Outline" },
+	{ "name": "Ball_Clipping", "bone": "bone", "attachment": "Ball_Clipping" },
+	{ "name": "Ball", "bone": "root", "attachment": "Ball" },
+	{ "name": "Pattern", "bone": "root", "attachment": "Pattern" },
+	{ "name": "SoftShadow", "bone": "root", "attachment": "SoftShadow", "blend": "multiply" },
+	{ "name": "HardShadow", "bone": "root", "attachment": "HardShadow", "blend": "multiply" },
+	{ "name": "Softlight", "bone": "root", "attachment": "Softlight" },
+	{ "name": "Highlight2", "bone": "root", "attachment": "Highlight2" },
+	{ "name": "Highlight", "bone": "root", "attachment": "Highlight" },
+	{ "name": "Outline2", "bone": "root", "attachment": "Outline" }
+],
+"skins": {
+	"default": {
+		"Ball": {
+			"Ball": { "x": 0.38, "y": 5.15, "width": 297, "height": 297 }
+		},
+		"Ball_Clipping": {
+			"Ball_Clipping": {
+				"type": "clipping",
+				"end": "Ball_Clipping",
+				"vertexCount": 54,
+				"vertices": [ -75.98, -76.8, -67.43, -97.39, -51.67, -120.16, -35.71, -137.24, -21.03, -148.4, -2.05, -159.18, 13.77, -165.46, 27.77, -169.17, 41.78, -171.65, 54.9, -172.69, 69.53, -172.03, 83.66, -170.28, 96.91, -167.11, 111.75, -162.42, 126.59, -155.49, 141.85, -145.6, 150.37, -138.59, 161.74, -128, 169.81, -118.44, 177.83, -107.48, 184.58, -95.89, 190.66, -82.98, 194.87, -70.6, 197.9, -58.52, 200.94, -38.29, 200.63, -21.92, 198.76, -3.7, 192.76, 17.94, 184.59, 35.71, 174.41, 53.16, 164.04, 65.38, 153.83, 75.84, 145.66, 82.74, 135.53, 89.94, 122.85, 97.05, 108.04, 103.65, 93.73, 108.29, 76.61, 111.55, 59.78, 112.69, 40.14, 111.75, 22.22, 108.69, 5.15, 102.32, -14.66, 92.95, -31.92, 80.49, -48.58, 64.51, -60.53, 48.7, -69.91, 32.45, -76.53, 15.88, -80.46, 1.31, -83.2, -11.81, -84.14, -24.02, -83.92, -40.87, -81.87, -55.61, -78.64, -69.48 ],
+				"color": "ce3a3aff"
+			}
+		},
+		"HardShadow": {
+			"HardShadow": { "x": -11.12, "y": 5.15, "width": 324, "height": 301 }
+		},
+		"Highlight": {
+			"Highlight": { "x": -27.62, "y": 42.15, "width": 105, "height": 113 }
+		},
+		"Highlight2": {
+			"Highlight2": { "x": -5.12, "y": 85.15, "width": 316, "height": 151 }
+		},
+		"Outline": {
+			"Outline": { "x": -0.12, "y": 5.65, "width": 294, "height": 294 }
+		},
+		"Outline2": {
+			"Outline": { "x": -0.12, "y": 5.65, "width": 294, "height": 294 }
+		},
+		"Pattern": {
+			"Pattern": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 1, 2, -482.22, -458.4, 1, 1, 2, -516.6, 951.18, 1, 1, 2, 356.14, 972.46, 1, 1, 2, 390.52, -437.12, 1 ],
+				"hull": 4,
+				"edges": [ 0, 2, 2, 4, 4, 6, 0, 6 ],
+				"width": 1410,
+				"height": 873
+			}
+		},
+		"SoftShadow": {
+			"SoftShadow": { "x": 0.88, "y": 5.15, "width": 300, "height": 301 }
+		},
+		"Softlight": {
+			"Softlight": { "x": 22.88, "y": 39.15, "width": 504, "height": 335 }
+		}
+	}
+},
+"animations": {
+	"animation": {
+		"bones": {
+			"bone2": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.0333, "x": -0.37, "y": 26.58 },
+					{ "time": 0.1, "x": 2.2, "y": 79.75 },
+					{ "time": 0.2, "x": 0, "y": 159.5 }
+				]
+			}
+		}
+	}
+}
+}

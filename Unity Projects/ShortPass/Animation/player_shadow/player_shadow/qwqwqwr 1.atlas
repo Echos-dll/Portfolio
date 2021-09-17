@@ -1,0 +1,90 @@
+
+qwqwqwr 1.png
+size: 128,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 1
+  rotate: true
+  xy: 83, 37
+  size: 32, 38
+  orig: 32, 38
+  offset: 0, 0
+  index: -1
+kafa
+  rotate: false
+  xy: 2, 129
+  size: 57, 63
+  orig: 57, 63
+  offset: 0, 0
+  index: -1
+sağ abcak
+  rotate: false
+  xy: 2, 22
+  size: 43, 47
+  orig: 43, 47
+  offset: 0, 0
+  index: -1
+sağ ayak
+  rotate: false
+  xy: 47, 38
+  size: 34, 40
+  orig: 34, 40
+  offset: 0, 0
+  index: -1
+sağ diz
+  rotate: false
+  xy: 91, 71
+  size: 35, 33
+  orig: 35, 33
+  offset: 0, 0
+  index: -1
+sağ kol
+  rotate: false
+  xy: 61, 145
+  size: 38, 47
+  orig: 38, 47
+  offset: 0, 0
+  index: -1
+sol ayak
+  rotate: false
+  xy: 91, 106
+  size: 35, 37
+  orig: 35, 37
+  offset: 0, 0
+  index: -1
+sol bacak
+  rotate: false
+  xy: 44, 80
+  size: 45, 47
+  orig: 45, 47
+  offset: 0, 0
+  index: -1
+sol diz
+  rotate: false
+  xy: 81, 2
+  size: 38, 33
+  orig: 38, 33
+  offset: 0, 0
+  index: -1
+sol el
+  rotate: false
+  xy: 47, 2
+  size: 32, 34
+  orig: 32, 34
+  offset: 0, 0
+  index: -1
+sol kol
+  rotate: false
+  xy: 2, 71
+  size: 40, 56
+  orig: 40, 56
+  offset: 0, 0
+  index: -1
+vücut
+  rotate: false
+  xy: 2, 194
+  size: 94, 60
+  orig: 94, 60
+  offset: 0, 0
+  index: -1

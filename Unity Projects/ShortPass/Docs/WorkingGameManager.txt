@@ -1,0 +1,273 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    public LevelGenScriptable Configuration;
+    public ObjectPooler ObjectPool;
+    private BallBehaviour BallB;
+    private PatrolOfFriend[] POF;
+    private PatrolOfEnemy[] POE;
+
+    private int currentLevel = 0;
+    private int friendCurrentPoint;
+    private int enemyCurrentPoint;
+    private readonly List<GameObject> FriendList = new List<GameObject>();
+    private readonly List<GameObject> EnemyList = new List<GameObject>();
+    private readonly List<GameObject> FriendPatrolPointList = new List<GameObject>();
+    private readonly List<GameObject> EnemyPatrolPointList = new List<GameObject>();
+    private readonly List<GameObject> FriendSpawnPointList = new List<GameObject>();
+    private readonly List<GameObject> EnemySpawnPointList = new List<GameObject>();
+    
+    private void god()
+    {
+        BallB = FindObjectOfType<BallBehaviour>();
+        POF = FindObjectsOfType<PatrolOfFriend>();
+        POE = FindObjectsOfType<PatrolOfEnemy>();
+    }
+    private void RandomizeFriend(GameObject[] spawnPoint)
+    {
+        for (int i = 0; i < spawnPoint.Length; i++)
+        {
+            if (i == 0)
+            {
+                spawnPoint[i].transform.position = new Vector3(0,-14,0);
+            }
+            else
+            {
+                Vector3 RandomPosition = spawnPoint[i-1].transform.position;
+                float RNGHeight =4f;
+                float RNGWidth = Random.Range(-0.5f, 0.5f);
+                RandomPosition.y += RNGHeight;
+                RandomPosition.x += RNGWidth;
+                spawnPoint[i].transform.position = RandomPosition;
+            }
+        }
+        
+    }
+    
+    private void RandomizeEnemy(GameObject[] spawnPoint)
+    {
+        for (int i = 0; i < spawnPoint.Length; i++)
+        {
+            if (i == 0)
+            {
+                spawnPoint[i].transform.position = new Vector3(0,-12,0);
+            }
+            else
+            {
+                Vector3 RandomPosition = spawnPoint[i-1].transform.position;
+                float RNGHeight =5f;
+                float RNGWidth = Random.Range(-0.5f, 0.5f);
+                RandomPosition.y += RNGHeight;
+                RandomPosition.x += RNGWidth;
+                spawnPoint[i].transform.position = RandomPosition;
+            }
+        }
+    }
+    
+    private void OnEnable()
+    {
+        
+        for (int i = 0; i < ObjectPool.PoolingObjectsList.Count; i++)
+        {
+            
+            switch (ObjectPool.PoolingObjectsList[i].tag)
+            {
+                case "friend":
+                    for (int j = 0; j < ObjectPool.pooledFriendObjects.Count; j++)
+                    {
+                        GameObject Friend = ObjectPooler.SharedInstance.GetPooledObject("friend");
+                            if (Friend != null)
+                            {
+                                FriendList.Add(Friend);
+                                Friend.SetActive(true);
+                            }
+                    }
+                    break;
+                
+                case "friendspawnpoint":
+                    for (int j = 0; j < ObjectPool.pooledFriendSpawnPoints.Count; j++)
+                    {
+                        GameObject FriendSpawnPoint = ObjectPooler.SharedInstance.GetPooledObject("friendspawnpoint");
+                        if (FriendSpawnPoint != null)
+                        {
+                            FriendSpawnPointList.Add(FriendSpawnPoint);
+                            FriendSpawnPoint.SetActive(true);
+                            
+                        }
+                    }
+                    break;
+                
+                case "friendpatrolpoint":
+                    for (int j = 0; j < ObjectPool.pooledFriendPatrolPoints.Count; j++)
+                    {
+                        GameObject FriendPatrolPoint = ObjectPooler.SharedInstance.GetPooledObject("friendpatrolpoint");
+                        if (FriendPatrolPoint != null)
+                        {
+                            FriendPatrolPointList.Add(FriendPatrolPoint);
+                            FriendPatrolPoint.SetActive(true);
+                        }
+                    }
+                    break;
+                
+                case "enemy":
+                    for (int j = 0; j < ObjectPool.pooledEnemyObjects.Count; j++)
+                    {
+                        GameObject Enemy = ObjectPooler.SharedInstance.GetPooledObject("enemy");
+                            if (Enemy != null)
+                            {
+                                EnemyList.Add(Enemy);
+                                Enemy.SetActive(true);
+                            }
+                    }
+                    break;
+                
+                case "enemyspawnpoint":
+                    for (int j = 0; j < ObjectPool.pooledEnemySpawnPoints.Count; j++)
+                    {
+                        GameObject EnemySpawnPoint = ObjectPooler.SharedInstance.GetPooledObject("enemyspawnpoint");
+                        if (EnemySpawnPoint != null)
+                        {
+                            EnemySpawnPointList.Add(EnemySpawnPoint);
+                            EnemySpawnPoint.SetActive(true);
+                        }
+                    }
+                    break;
+                
+                case "enemypatrolpoint":
+                    for (int j = 0; j < ObjectPool.pooledEnemyPatrolPoints.Count; j++)
+                    {
+                        GameObject EnemyPatrolPoint = ObjectPooler.SharedInstance.GetPooledObject("enemypatrolpoint");
+                        if (EnemyPatrolPoint != null)
+                        {
+                            EnemyPatrolPointList.Add(EnemyPatrolPoint);
+                            EnemyPatrolPoint.SetActive(true);
+                        }
+                    }
+                    break;
+            }
+        }
+
+        for (int i = 0; i < ObjectPool.pooledFriendSpawnPoints.Count; i++)
+        {
+            RandomizeFriend(ObjectPool.pooledFriendSpawnPoints.ToArray());
+        }
+
+        for (int i = 0; i < ObjectPool.pooledEnemySpawnPoints.Count; i++)
+        {
+            RandomizeEnemy(ObjectPool.pooledEnemySpawnPoints.ToArray());
+        }
+    }
+
+    private void Start()
+    {
+        god();
+        Assigner();
+        BallB.Holder = FriendList[POF.Length - 1];
+        BallB.gameObject.transform.position = FriendList[POF.Length - 1].gameObject.transform.position + new Vector3(0.5f, 0.5f, 0);
+    }
+
+    private void Assigner()
+    {
+        //BALL && ARROW
+        var BallSettings = Configuration.LevelGenerator1[currentLevel].BallOfLevel.BallArrowConfigGetter;
+        BallB.ThisObject = BallSettings.BallObject;
+        BallB.Arrow = BallSettings.ArrowObject;
+        BallB.Arrowmaxscale = BallSettings.ArrowMaxScale;
+        BallB.Arrowscalecoefficient = BallSettings.ArrowScaleCoefficient;
+        BallB.Maxspeed = BallSettings.BallMaxSpeed;
+        BallB.Arrowr = BallSettings.ArrowRadius;
+        BallB.Ballr = BallSettings.BallRadius;
+        BallB.ThisObject.GetComponent<SpriteRenderer>().sprite = BallSettings.BallSprite;
+        BallB.Arrow.GetComponent<SpriteRenderer>().sprite = BallSettings.ArrowSprite;
+        
+        //FRIEND
+        var FriendSettings = Configuration.LevelGenerator1[currentLevel].FriendListOfLevel.FriendConfigGetter;
+        for (int i = 0; i < FriendSettings.Count; i++)
+        {
+            POF[i].thisObjectGetter = FriendSettings[i].FriendObject ;
+            POF[i].Area = FriendSettings[i].AreaObject;
+            POF[i].gameObject.GetComponent<SpriteRenderer>().sprite = FriendSettings[i].FriendSprite;
+            POF[i].Speed = FriendSettings[i].FriendSpeed;
+            POF[i].Target = FriendPatrolType(FriendSettings[i].PatrolModel, FriendSpawnPointList[i].transform.position,friendCurrentPoint);
+            POF[i].transform.position = POF[i].Target[0].position;
+        }
+        
+        //ENEMY
+        var EnemySettings = Configuration.LevelGenerator1[currentLevel].EnemyListOfLevel.EnemyConfigGetter;
+       
+        for (int i = 0; i < EnemySettings.Count; i++)
+        {
+            POE[i].ThisObject = EnemySettings[i].EnemyObject;
+            POE[i].Speed = EnemySettings[i].EnemySpeed;
+            POE[i].GetComponent<SpriteRenderer>().sprite = EnemySettings[i].EnemySprite;
+            POE[i].Target = EnemyPatrolType(EnemySettings[i].PatrolModel, EnemySpawnPointList[i].transform.position, enemyCurrentPoint);
+            POE[i].gameObject.transform.position = POE[i].Target[0].position;
+            
+        }
+    }
+
+    private Transform[] FriendPatrolType(int type, Vector3 core, int i)
+    {
+       
+        switch (type)
+        {
+            case 0:
+                Transform[] newTargets1 = new Transform[2];
+                FriendPatrolPointList[i].transform.position = core + new Vector3(1.5f, 0, 0);
+                newTargets1[0] = FriendPatrolPointList[i].transform;
+                i++;
+                FriendPatrolPointList[i].transform.position = core + new Vector3(-1.5f, 0, 0);
+                newTargets1[1] = FriendPatrolPointList[i].transform;
+                i++;
+                friendCurrentPoint = i;
+                return newTargets1;
+            
+            case 1:
+                //triangle
+                break;
+            case 2:
+                //rectangle
+                break;
+            case 3:
+                //Pentagon
+                break;
+        }
+
+        return null;
+    }
+    
+    private Transform[] EnemyPatrolType(int type, Vector3 core, int j)
+    {
+        switch (type)
+        {
+            case 0:
+                Transform[] newTargets1 = new Transform[2];
+                EnemyPatrolPointList[j].transform.position = core + new Vector3(1.5f, 0, 0);
+                newTargets1[0] = EnemyPatrolPointList[j].transform;
+                j++;
+                EnemyPatrolPointList[j].transform.position = core + new Vector3(-1.5f, 0, 0);
+                newTargets1[1] = EnemyPatrolPointList[j].transform;
+                j++;
+                enemyCurrentPoint = j;
+                return newTargets1;
+            
+            case 1:
+                //triangle
+                break;
+            case 2:
+                //rectangle
+                break;
+            case 3:
+                //Pentagon
+                break;
+                
+        }
+
+        return null;
+    }
+    
+    
+}
+

@@ -1,0 +1,27 @@
+
+main-ball2.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Ball
+  rotate: false
+  xy: 1414, 578
+  size: 297, 297
+  orig: 297, 297
+  offset: 0, 0
+  index: -1
+Outline
+  rotate: false
+  xy: 1414, 282
+  size: 294, 294
+  orig: 294, 294
+  offset: 0, 0
+  index: -1
+Pattern
+  rotate: false
+  xy: 2, 2
+  size: 1410, 873
+  orig: 1410, 873
+  offset: 0, 0
+  index: -1
