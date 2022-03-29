@@ -22,7 +22,7 @@ public class Building : MonoBehaviour
         {
             for (int i = 0; i < needAmount; i++)
             {
-                co.GetComponent<CollectableStack>().RemoveItem();
+                co.GetComponent<CollectableStack>().UseItem();
             }
             Destroy(gameObject);
         }

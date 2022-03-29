@@ -27,10 +27,4 @@ public class Door : MonoBehaviour
         randomMaterial = materials[Random.Range(0, materials.Count-1)];
         GetComponent<Renderer>().material = randomMaterial;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

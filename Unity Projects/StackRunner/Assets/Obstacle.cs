@@ -20,8 +20,11 @@ public class Obstacle : MonoBehaviour
         var co = collision.gameObject;
         if (co.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<CollectableStack>().RemoveItem();
-            GetComponent<Collider>().enabled = false;
+            for (int i = 0; i < 5; i++)
+            {
+                collision.gameObject.GetComponent<CollectableStack>().DropItem();
+                GetComponent<Collider>().enabled = false;
+            }
         }
        
     }

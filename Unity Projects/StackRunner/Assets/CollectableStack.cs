@@ -9,16 +9,29 @@ public class CollectableStack : MonoBehaviour
 
     private List<GameObject> stackedItems = new List<GameObject>();
     private int _stackNumber = 0 ;
+    
     private Material currentMaterial;
 
     private void Start()
     {
-        currentMaterial = new Material(Shader.Find("Default-Material"));
+        currentMaterial = stackItemPrefab.GetComponent<Renderer>().sharedMaterial;
     }
 
-    public void RemoveItem()
+    public void UseItem()
     {
-        Debug.Log("Removed Item");
+        var child = stackParent.transform.GetChild(stackParent.transform.childCount-1);
+        stackedItems.Remove(child.gameObject);
+        Destroy(child.gameObject);
+        _stackNumber -= 1;
+    }
+
+    public void DropItem()
+    {
+        var child = stackParent.transform.GetChild(stackParent.transform.childCount-1);
+        child.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        stackedItems.Remove(child.gameObject);
+        child.parent = null;
+        _stackNumber -= 1;
     }
 
     public void AddItem()
